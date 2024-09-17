@@ -1,7 +1,7 @@
 services:
   db:
     image: postgres:alpine
-    container_name: 'db'
+    container_name: "db"
     restart: always
     env_file:
       - backend/.env
@@ -11,8 +11,8 @@ services:
       - internal
 
   backend:
-    container_name: 'kupi-backend'
-    image: 'kupi-backend'
+    container_name: "kupi-backend"
+    image: "kupi-backend"
     restart: always
     env_file:
       - backend/.env
@@ -25,8 +25,8 @@ services:
       - internal
 
   frontend:
-    container_name: 'kupi-frontend'
-    image: 'kupi-frontend'
+    container_name: "kupi-frontend"
+    image: "kupi-frontend"
     restart: always
     build:
       context: ./frontend
@@ -35,15 +35,6 @@ services:
       - "8080:80"
     networks:
       - external
-
-  adminer:
-    image: adminer
-    container_name: 'adminer'
-    restart: always
-    ports:
-      - "8081:8080"
-    networks:
-      - internal
 
 volumes:
   pg_data:
